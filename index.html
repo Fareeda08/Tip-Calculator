@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip-Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <img src="./images/logo.svg" alt="" />
+
+    <main>
+      <section>
+        <form>
+          <span class="billing">
+            <p class="OG-bill">Bill</p>
+            <p class="bill-error validity">
+              Please input a valid bill value
+            </p></span
+          >
+
+          <input type="text" name="" id="bill" class="input" placeholder="0" />
+        </form>
+
+        <div class="tip-percentage">
+          <div>
+            <button>5%</button>
+            <button>10%</button>
+            <button>15%</button>
+          </div>
+
+          <div class="custom-div">
+            <button>25%</button>
+            <button>50%</button>
+            <button class="custom">Custom</button>
+            <input type="text" name="" id="none" class="clickedCustom" />
+          </div>
+        </div>
+
+        <form>
+          <span class="billing">
+            <p class="OG-people">Number of People</p>
+            <p class="zero-people validity">No of people can't be Zero</p>
+          </span>
+
+          <input
+            type="text"
+            name=""
+            id="no-of-people"
+            class="input"
+            placeholder="0"
+          />
+        </form>
+      </section>
+      <aside>
+        <section>
+          <div>
+            <span>
+              <p>Tip Amount</p>
+              <p class="per-person">/person</p>
+            </span>
+
+            <h1 class="tip-amount">$0.00</h1>
+          </div>
+
+          <div>
+            <span>
+              <p>Total</p>
+              <p class="per-person">/person</p>
+            </span>
+
+            <h1 class="total">$0.00</h1>
+          </div>
+        </section>
+
+        <button class="reset">RESET</button>
+      </aside>
+    </main>
+
+    <div id="none" class="validity-check">
+      <p class="invalid-bill">Enter a valid bill value</p>
+      <p class="invalid-persons">Enter a valid number of people</p>
+      <p class="zero-person">Number of people cannaot be zero</p>
+      <p class="invalid-bill-and-people">
+        Enter a valid bill value and number of people
+      </p>
+
+      <button type="button">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

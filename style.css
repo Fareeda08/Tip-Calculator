@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  --Green900: hsl(183, 100%, 15%);
+  --Grey500: hsl(186, 14%, 43%);
+  --Grey400: hsl(184, 14%, 56%);
+  --Grey200: hsl(185, 41%, 84%);
+  --Grey50: hsl(189, 47%, 97%);
+  --White: hsl(0, 100%, 100%);
+}
+
+html {
+  height: 100vh;
+  width: auto;
+}
+
+body {
+  background-color: var(--Grey200);
+  margin: 0;
+  height: 100vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: "Space Mono", monospace;
+}
+
+.backdrop {
+  backdrop-filter: brightness(0.5);
+}
+
+.opacity {
+  opacity: 0.5;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--White);
+  border-radius: 20px;
+  padding: 2.2rem 2rem;
+  width: 45%;
+}
+
+main section {
+  width: 40%;
+  padding: 3rem;
+  padding-top: 0.1rem;
+  padding-left: 2rem;
+}
+
+main aside {
+  width: 39%;
+  background-color: var(--Green900);
+  padding: 1.5rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+aside div {
+  display: flex;
+  width: 200%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+aside p {
+  color: var(--Grey50);
+  margin: 2px;
+}
+
+form {
+  font-size: 24px;
+}
+
+.input {
+  padding: 0.5rem;
+  border-radius: 7px;
+  font-size: 24px;
+  width: 90%;
+  background-color: var(--Grey50);
+  background-repeat: no-repeat;
+  background-position: 5%;
+  text-align: right;
+}
+
+#bill {
+  background-image: url(./images/icon-dollar.svg);
+}
+
+#no-of-people {
+  background-image: url(./images/icon-person.svg);
+}
+
+span h1 {
+  color: var(--Grey200);
+}
+
+span p.per-person {
+  font-size: 14px;
+  color: var(--Grey500);
+  margin-top: 0;
+}
+
+aside button {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  background-color: hsl(184deg 63.06% 24.53%);
+  color: var(--Grey500);
+  outline: none;
+  border: 1px solid var(--Green900);
+}
+
+section .tip-percentage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 1.5rem 0;
+}
+
+section button {
+  padding: 0.5rem 0.9rem;
+  background-color: var(--Green900);
+  color: var(--Grey200);
+  margin: 0.1rem;
+  font-weight: 600;
+  width: 28%;
+}
+
+section button:hover {
+  background-color: aquamarine;
+  color: var(--Green900);
+}
+
+.clicked {
+  background-color: aquamarine !important;
+  border: 2px solid var(--Green900) !important;
+  color: var(--Green900);
+}
+
+button.custom {
+  background-color: var(--Grey50);
+  color: var(--Green900);
+  font-weight: 600;
+  border: 0;
+  text-align: center;
+}
+
+section p {
+  margin-bottom: 5px;
+  margin-top: 23px;
+  font-size: 14px;
+}
+
+.clickedCustom {
+  padding: 0.35rem 0.9rem;
+  background-color: var(--Green900);
+  color: black;
+  margin: 0.1rem;
+  margin-top: 0.4rem;
+  font-weight: 600;
+  width: 17%;
+  background-color: var(--Grey50);
+  text-align: center;
+  font: inherit;
+}
+
+#none {
+  display: none;
+}
+
+.none {
+  visibility: hidden;
+}
+
+.display {
+  display: inline-block !important;
+}
+
+div h1 {
+  color: rgba(127, 255, 212, 0.84);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  body {
+    margin: 0;
+  }
+
+  .logo {
+    margin-top: 2rem;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 0;
+    width: auto;
+    height: auto;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  main section {
+    width: auto;
+  }
+
+  section button {
+    width: 28.9%;
+  }
+
+  button.custom {
+    padding: 0.5rem 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.195);
+  }
+
+  main aside {
+    width: 85%;
+    padding: 1.5rem;
+  }
+
+  aside span {
+    margin-bottom: 1rem;
+  }
+
+  aside span {
+    align-items: center;
+  }
+
+  span p.per-person {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  aside p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  aside div {
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (max-width: 75rem) {
+  .logo {
+    margin-top: 2rem;
+  }
+
+  main {
+    width: auto;
+    height: auto;
+    padding: 1rem;
+  }
+}
+.invalid {
+  border: 2px solid red;
+  color: Red;
+  outline: red;
+}
+
+.billing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.billing .validity {
+  font-size: 11px;
+  color: red;
+  font-weight: bold;
+}
+
+.zero-people {
+  display: none;
+}
+
+.bill-error {
+  display: none;
+}
+
+.invalidity {
+  display: inline-block !important;
+  background-color: var(--Grey400);
+  padding: 1rem;
+  z-index: 1;
+  position: absolute;
+  text-align: center;
+  color: rgb(112, 29, 29);
+}
+
+.invalidity button {
+  padding: 0.5rem 1rem;
+  background-color: var(--Green900);
+  color: whitesmoke;
+}
