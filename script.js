@@ -7,7 +7,7 @@ const total = document.querySelector(".total");
 const resetBtn = document.querySelector(".reset");
 let customPercentage = document.querySelector(".custom-div .clickedCustom");
 
-let persons;
+let persons = 0;
 let tip;
 let tipPerPerson;
 let totalBill;
@@ -30,7 +30,7 @@ buttons.forEach((button) => {
   });
 });
 
-let billValue;
+let billValue = 0;
 inputBill.addEventListener("input", (bill) => {
   billValue = bill.target.value;
 
@@ -41,32 +41,46 @@ inputBill.addEventListener("input", (bill) => {
     ogBill.classList.add("none");
     invalidBill.classList.add("display");
     inputBill.classList.add("invalid");
+  }
+});
 
-    tipButtons.addEventListener("click", (event) => {
-      if (event.target.tagName === "BUTTON") {
-        document.querySelector("body").classList.add("backdrop");
-        document.querySelector("main").classList.add("opacity");
-        document.querySelector(".validity-check").classList.add("invalidity");
-      }
-    });
-  } else {
-    const ogBill = document.querySelector(".OG-bill");
-    const invalidBill = document.querySelector(".bill-error");
+const ogBill = document.querySelector(".OG-bill");
+const invalidBill = document.querySelector(".bill-error");
+const validityCheck =  document.querySelector(".validity-check")
+ 
+tipButtons.addEventListener("click", (event) => {
+  if (event.target.tagName === "BUTTON" && (billValue === 0 || persons === 0)) {
+    document.querySelector("body").classList.add("backdrop");
+    document.querySelector("main").classList.add("opacity");
+    validityCheck.classList.add("invalidity");
 
+  
+    document.querySelector('.validity-check button')
+      .addEventListener('click', () =>
+      {
+    document.querySelector("body").classList.remove("backdrop");
+    document.querySelector("main").classList.remove("opacity");
+    validityCheck.classList.remove("invalidity");
+}
+)
+  }
+  else {
     ogBill.classList.remove("none");
     invalidBill.classList.remove("display");
     inputBill.classList.remove("invalid");
 
-    tipButtons.addEventListener("click", (button) => {
-      if (button.target.tagName === "BUTTON") {
-        buttonContent = button.target.textContent;
-
+    let tipButtonClassname;
+    
+      if (event.target.tagName === "BUTTON") {
+        buttonContent = event.target.textContent;
+        tipButtonClassname = event.target.className
+      
         const neededTipValue = buttonContent.slice(0, buttonContent.length - 1);
         customTipValue = buttonContent;
 
         if (
           buttonContent !== "Custom" &&
-          button.target.className === "clicked"
+          event.target.className === "clicked"
         ) {
           tipCal(neededTipValue);
 
@@ -75,7 +89,7 @@ inputBill.addEventListener("input", (bill) => {
             total.textContent = `$0.00`;
             inputBill.value = "";
             noOfPeople.value = "";
-            button.target.classList.remove("clicked");
+            event.target.classList.remove("clicked");
             resetBtn.classList.remove("clicked");
             custom.textContent = "Custom";
             customPercentage.value = "";
@@ -83,9 +97,12 @@ inputBill.addEventListener("input", (bill) => {
           });
         }
       }
-    });
+      else {
+        console.log('sikee')
+      }
+   
   }
-});
+})
 
 noOfPeople.addEventListener("input", (people) => {
   persons = people.target.value;
@@ -105,7 +122,7 @@ noOfPeople.addEventListener("input", (people) => {
     zeroPeople.classList.remove("display");
     noOfPeople.classList.remove("invalid");
   }
-});
+});   
 
 custom.addEventListener("click", () => {
   customPercentage.classList.add("display");
@@ -117,7 +134,7 @@ custom.addEventListener("click", () => {
     trimmedValue = inputCustomPercentage.trim();
   });
 });
-
+    
 customPercentage.addEventListener("keypress", (ev2) => {
   savedCustomKey = ev2.key;
 
@@ -133,7 +150,7 @@ customPercentage.addEventListener("keypress", (ev2) => {
     customTipCal(customTipValue);
   }
 });
-
+    
 function tipCal(tipPercentage) {
   if (tipPercentage !== "Custo") {
     tip = tipPercentage * 0.01 * billValue;
@@ -196,3 +213,26 @@ function customTipCal(customTip) {
     resetBtn.classList.add("clicked");
   }
 }
+
+ const errorTypes = document.querySelectorAll(".validity-check p")
+    let errorTypeClass = ''
+    errorTypes.forEach((errorType) => {
+      errorTypeClass = errorType.className
+    })
+switch (errorTypeClass) {
+  case 'invalid-bill':
+    document.querySelector(`.${errorTypeClass}`).textContent = "Enter a valid bill value"
+    break;
+  case 'invalid-persons':
+    document.querySelector(`.${errorTypeClass}`).textContent = "Enter a valid number of people"
+    break;
+  case 'zero-person':
+    document.querySelector(`.${errorTypeClass}`).textContent = "Number of people cannot be zero"
+    break;
+
+  default:
+    errorTypeClass = 'invalid-bill-and-people'
+    document.querySelector(`.${errorTypeClass}`).textContent = "Enter a valid bill value and number of people"
+    break;
+}
+
