@@ -33,15 +33,23 @@ buttons.forEach((button) => {
 let billValue = 0;
 inputBill.addEventListener("input", (bill) => {
   billValue = bill.target.value;
-
-  if (isNaN(Number(billValue))) {
     const ogBill = document.querySelector(".OG-bill");
-    const invalidBill = document.querySelector(".bill-error");
+  const invalidBill = document.querySelector(".bill-error");
+  
+  if (isNaN(Number(billValue)) || billValue === '0') {
+
 
     ogBill.classList.add("none");
     invalidBill.classList.add("display");
     inputBill.classList.add("invalid");
   }
+  else {   
+
+    ogBill.classList.remove("none");
+    invalidBill.classList.remove("display");
+    inputBill.classList.remove("invalid");
+  }
+  
 });
 
 const ogBill = document.querySelector(".OG-bill");
@@ -108,18 +116,14 @@ tipButtons.addEventListener("click", (event) => {
 noOfPeople.addEventListener("input", (people) => {
   persons = people.target.value;
 
-  if (isNaN(Number(persons))) {
-    const ogPeople = document.querySelector(".OG-people");
+  const ogPeople = document.querySelector(".OG-people");
     const zeroPeople = document.querySelector(".zero-people");
-
-    ogPeople.classList.add("none");
+  if (isNaN(Number(persons)) || persons === '0') {
+       ogPeople.classList.add("none");
     zeroPeople.classList.add("display");
     noOfPeople.classList.add("invalid");
   } else {
-    const ogPeople = document.querySelector(".OG-people");
-    const zeroPeople = document.querySelector(".zero-people");
-
-    ogPeople.classList.remove("none");
+       ogPeople.classList.remove("none");
     zeroPeople.classList.remove("display");
     noOfPeople.classList.remove("invalid");
   }
