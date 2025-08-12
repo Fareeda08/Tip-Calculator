@@ -117,9 +117,17 @@ noOfPeople.addEventListener("input", (people) => {
   persons = people.target.value;
 
   const ogPeople = document.querySelector(".OG-people");
-    const zeroPeople = document.querySelector(".zero-people");
+  const zeroPeople = document.querySelector(".zero-people");
+  
+  const errorPeople = document.querySelector('.zero-people')
   if (isNaN(Number(persons)) || persons === '0') {
-       ogPeople.classList.add("none");
+    if (persons === '0') {
+      errorPeople.textContent = `No of people can't be Zero`
+    } else {
+      errorPeople.textContent = `No of people can't be ${people.target.value}`
+    }
+    
+    ogPeople.classList.add("none");
     zeroPeople.classList.add("display");
     noOfPeople.classList.add("invalid");
   } else {
