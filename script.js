@@ -48,8 +48,9 @@ const ogBill = document.querySelector(".OG-bill");
 const invalidBill = document.querySelector(".bill-error");
 const validityCheck =  document.querySelector(".validity-check")
  
+
 tipButtons.addEventListener("click", (event) => {
-  if (event.target.tagName === "BUTTON" && (billValue === 0 || persons === 0)) {
+    if (event.target.tagName === "BUTTON" && ((billValue === 0 || persons === 0) || (isNaN(billValue) || isNaN(persons)))) {
     document.querySelector("body").classList.add("backdrop");
     document.querySelector("main").classList.add("opacity");
     validityCheck.classList.add("invalidity");
